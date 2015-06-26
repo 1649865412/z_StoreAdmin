@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="customerRegistration" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="782" leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="20" uuid="4329e122-891e-457d-b4f4-22a5c0390c90">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="regStartDate" class="java.sql.Timestamp" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new java.sql.Timestamp(0)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="regEndDate" class="java.sql.Timestamp" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new java.sql.Timestamp(new java.util.Date().getTime())]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     *
+FROM
+     `app_user` customer
+WHERE
+     customer.deleted=0 and customer.isLocked=0 and
+     customer.registerTime <= $P{regEndDate}
+     and customer.registerTime >= $P{regStartDate}]]>
+	</queryString>
+	<field name="appuserId" class="java.lang.Integer"/>
+	<field name="supplierId" class="java.lang.Integer"/>
+	<field name="membershipId" class="java.lang.Integer"/>
+	<field name="username" class="java.lang.String"/>
+	<field name="password" class="java.lang.String"/>
+	<field name="userType" class="java.lang.Integer"/>
+	<field name="title" class="java.lang.String"/>
+	<field name="firstname" class="java.lang.String"/>
+	<field name="lastname" class="java.lang.String"/>
+	<field name="email" class="java.lang.String"/>
+	<field name="fax" class="java.lang.String"/>
+	<field name="telephone" class="java.lang.String"/>
+	<field name="preferredLanguage" class="java.lang.String"/>
+	<field name="lastLoginTime" class="java.sql.Timestamp"/>
+	<field name="status" class="java.lang.Integer"/>
+	<field name="isLocked" class="java.lang.Integer"/>
+	<field name="totalPoints" class="java.lang.Integer"/>
+	<field name="userPosition" class="java.lang.String"/>
+	<field name="passwordHint" class="java.lang.String"/>
+	<field name="passwordHintAnswer" class="java.lang.String"/>
+	<field name="customerPosition" class="java.lang.String"/>
+	<field name="registerTime" class="java.sql.Timestamp"/>
+	<field name="deleted" class="java.lang.Integer"/>
+	<field name="createBy" class="java.lang.Integer"/>
+	<field name="updateBy" class="java.lang.Integer"/>
+	<field name="createTime" class="java.sql.Timestamp"/>
+	<field name="updateTime" class="java.sql.Timestamp"/>
+	<field name="note" class="java.lang.String"/>
+	<field name="version" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="2338baa4-05f3-4c04-a842-6a8e81b16cf4" key="staticText-1" x="0" y="0" width="782" height="50"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[注册会员汇总]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="30" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="b2d815e2-0a7a-4fc8-af94-84d90277af02" key="staticText-5" mode="Opaque" x="0" y="0" width="119" height="30" backcolor="#F5F5F5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[注册时间]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b81f43d8-1be1-443e-93f8-2cb7f7897a68" key="staticText-6" mode="Opaque" x="120" y="0" width="135" height="30" backcolor="#F5F5F5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[用户名]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d183255c-dd4d-45e4-8194-ec9c9e4e9dd2" key="staticText-9" mode="Opaque" x="391" y="0" width="136" height="30" forecolor="#000000" backcolor="#F5F5F5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Email]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b9fd553f-2232-47a0-82d4-89a108f97fce" key="staticText-10" mode="Opaque" x="528" y="0" width="135" height="30" backcolor="#F5F5F5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[电话]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ba3c1171-a4cc-4f3e-a03f-72bc12817d2e" key="staticText-11" mode="Opaque" x="664" y="0" width="116" height="30" backcolor="#F5F5F5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[是否激活]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="91d94d95-bcaa-494d-9cba-1336af15366d" key="staticText-13" mode="Opaque" x="256" y="0" width="134" height="30" backcolor="#F5F5F5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[姓名]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy HH.mm.ss" isBlankWhenNull="true">
+				<reportElement uuid="633ab94b-0efa-4df0-bd87-f983825fcbd1" key="textField" x="0" y="0" width="116" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{createTime}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="2afa0fb8-a492-456a-a795-2b39a3773c4f" key="textField" x="117" y="0" width="137" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{username}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="2c28585d-dec0-4359-9adb-46c515e3a68c" key="textField" x="391" y="0" width="135" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="dbb82521-faf9-4ceb-bbe9-12c7bd3d0bef" key="textField" x="527" y="0" width="135" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{telephone}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="3a7ab9b7-4819-42e0-a783-043d79524916" key="textField-3" x="662" y="0" width="117" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Integer.valueOf(1).intValue()==$F{status}.intValue()?"是":"否"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="c97a7b69-a4e4-4aee-b859-027d740cb4f8" key="textField-4" x="255" y="0" width="134" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{firstname}!=null?$F{firstname}:"")+" "+($F{lastname}!=null?$F{lastname}:"")]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="44" splitType="Stretch">
+			<printWhenExpression><![CDATA[Boolean.valueOf($V{PAGE_COUNT}.intValue()!=0)]]></printWhenExpression>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="1f9e1d16-e81e-4769-b413-233ee56cbf23" key="textField" x="583" y="0" width="81" height="44"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["第" + $V{PAGE_NUMBER} + "页 共"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" isBlankWhenNull="false">
+				<reportElement uuid="05eabc78-3c52-463c-96cd-7a4576cb96ee" key="textField" x="664" y="0" width="32" height="44"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["" + $V{PAGE_NUMBER} + "页"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="afb44da0-f363-45dc-ba87-985f687389dc" key="staticText-16" x="267" y="0" width="60" height="44"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[统计总数量：]]></text>
+			</staticText>
+			<textField evaluationTime="Report" isBlankWhenNull="false">
+				<reportElement uuid="f345248b-122d-41ee-a7a6-a4702fbb6862" key="textField-7" x="327" y="0" width="31" height="44"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}.toString()+"笔"]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement uuid="2bffcd2c-6e1f-49dc-a9d1-be01fc551017" key="textField-10" x="115" y="0" width="123" height="44"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.sql.Timestamp(new java.util.Date().getTime())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="33035315-a16d-4b8e-8bc1-b28da1a2ba44" key="staticText-17" x="51" y="0" width="64" height="44"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[统计时间：]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="b2b5b37d-0dbe-487c-ab20-6cf131058188" key="staticText-14" x="267" y="0" width="60" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[统计总数量：]]></text>
+			</staticText>
+			<textField evaluationTime="Report" isBlankWhenNull="false">
+				<reportElement uuid="5878cda8-1172-431c-9c72-31dedd5860a6" key="textField-5" x="327" y="0" width="31" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}.toString()+"笔"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="6cdba260-7c95-4202-8535-1552b553f20e" key="textField-8" x="582" y="0" width="81" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["第" + $V{PAGE_NUMBER} + "页 共"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" isBlankWhenNull="false">
+				<reportElement uuid="5fe0aca8-1740-40b9-94c4-638efe80e9c3" key="textField-9" x="663" y="0" width="32" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["" + $V{PAGE_NUMBER} + "页"]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement uuid="468f083e-3862-4c85-b7fc-5c198d3f7e11" key="textField-11" x="115" y="0" width="123" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new java.sql.Timestamp(new java.util.Date().getTime())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="6d8193cc-ed1b-47d0-9ef3-dd2e8bea507d" key="staticText-18" x="51" y="0" width="64" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[统计时间：]]></text>
+			</staticText>
+		</band>
+	</lastPageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+	<noData>
+		<band height="39" splitType="Stretch">
+			<printWhenExpression><![CDATA[new Boolean($V{PAGE_COUNT}.equals(new Integer(0)))]]></printWhenExpression>
+			<staticText>
+				<reportElement uuid="969d9d66-76eb-4009-b927-3f247264e9c7" key="staticText-2" x="352" y="15" width="69" height="17"/>
+				<textElement>
+					<font size="10" pdfFontName="STSong-Light" pdfEncoding="UniGB-UCS2-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[记录为空!]]></text>
+			</staticText>
+		</band>
+	</noData>
+</jasperReport>

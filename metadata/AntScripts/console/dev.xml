@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="z_cartmatic-dev" basedir="." default="z_copy-to-eStore">
+
+	<target name="z_copy-to-eStore">
+		<property file="../conf/dev.properties" />
+		<ant antfile="../scripts/webapps-sync.xml" target="z_copy-to-eStore"/>
+		
+	</target>
+</project>
